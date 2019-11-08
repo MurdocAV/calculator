@@ -1,10 +1,10 @@
 //Javascript Calculator: 
-var entries = [0];
-var total = 0; // For mathematical logic
-var total2 = 0;
+let entries = [0];
+let total = 0; // For mathematical logic
+let total2 = 0;
 let temp = 0; // For any value that needs to be stored temporarily
-var displayVal = '';
-var activeArithmetic = "";
+let displayVal = '';
+let activeArithmetic = "";
 document.getElementById("outputScreen").value = entries[0]; // Sets the default state to 0;15.85714285
 
 function main() {
@@ -14,7 +14,7 @@ function main() {
 function addEventListeners(){
 	// Get input from the button(s) pressed.
 	// Add event listener to each button which fires computeCalculation() if pressed
-	var listOfBtns;
+	let listOfBtns;
 	listOfBtns = document.getElementsByClassName("btn");
 	for (let i = 0; i < listOfBtns.length; i++) {
 		currentBtn = listOfBtns[i];
@@ -41,6 +41,9 @@ function fullStopCheck(aList){
 }
 
 function pushEntries(aList) {
+  if (aList.length < 1) // If there's no values being displayed, display a 0.
+    aList = [0]
+
 	document.getElementById("outputScreen").value = "";// Clears the current value
 	temp = "";
 	temp += entries[0];
@@ -71,7 +74,7 @@ function negativeNum(){
 function calcTotal() {
 	//Calculates total
 	
-	var numberStr = "";
+	let numberStr = "";
 	for (let i = 0; i < entries.length; i++){
 		numberStr += entries[i]
 	}
@@ -82,7 +85,7 @@ function calcTotal() {
 function rtnTotal() {
 	//Returns totals of entries without modifying any values
 	
-	var numberStr = "";
+	let numberStr = "";
 	for (let i = 0; i < entries.length; i++){
 		numberStr += entries[i]
 	}
@@ -92,8 +95,9 @@ function rtnTotal() {
 
 function computeCalculation(buttonPressed) {
 	
-	var displayObjectVal = document.getElementById("outputScreen"); //Output Screen
-	console.log("I'm computing Calculations. " + "Did you press " + buttonPressed);
+	let displayObjectVal = document.getElementById("outputScreen"); //Output Screen
+	//console.log("I'm computing Calculations. " + "Did you press " + buttonPressed);
+  console.log('Entries are :', entries)
 	
 	//Get value of the btn pressed.
 	
@@ -132,16 +136,15 @@ function computeCalculation(buttonPressed) {
 		pushEntries(entries);
 
 	} else if(inputVal === "CE") {
-		entries.pop()
-		pushEntries(entries);
-		
+      entries.pop()
+		  pushEntries(entries);
 		
 	} else if(inputVal == "&#9003") {
 		return
 		
 	} else if(inputVal === "x") {
 		calcTotal(); //Sends current number to total
-		
+
 		//reset entries for a new button
 		entries = [0]
 		pushEntries(["x"]);// displays x on press
@@ -222,8 +225,8 @@ function computeCalculation(buttonPressed) {
 	}
 }
 
-  // Output button press into a variable.
+  // Output button press into a letiable.
 
-// Output the variable onto the screen of the calculator.
+// Output the letiable onto the screen of the calculator.
 
 // Listen to different button presses.
