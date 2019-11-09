@@ -225,8 +225,8 @@ function computeCalculation(buttonPressed) {
 	}
 }
 
-  // Output button press into a letiable.
+  // Output button press into a variable.
 
-// Output the letiable onto the screen of the calculator.
+// Output the variable onto the screen of the calculator.
 
 // Listen to different button presses.
